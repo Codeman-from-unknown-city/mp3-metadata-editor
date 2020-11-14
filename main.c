@@ -20,6 +20,12 @@ int main(int argc, char *argv[]) {
       show(path_to_mp3);
     if (!strcmp(cmd.name, "get"))
       get(path_to_mp3, cmd.val);
+    if (!strcmp(cmd.name, "set")) {
+      char *tmp = cmd.val;
+      cmd = parse_param(*(++argv));
+      argc--;
+      set(path_to_mp3, tmp, cmd.val);
+    }
   }
   return 0;
 }
